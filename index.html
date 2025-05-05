@@ -1,26 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andre Uzamurengera - Personal Website</title>
+  <meta name="description" content="Personal website of Andre Uzamurengera, showcasing CV, research, projects, and more.">
+  <meta name="keywords" content="Andre Uzamurengera, CV, Research, Projects, Personal Website, Academic Portfolio">
+  <meta name="author" content="Andre Uzamurengera">
+  <link rel="canonical" href="https://yourdomain.com/" />
+  <meta property="og:title" content="Andre Uzamurengera - Personal Website">
+  <meta property="og:description" content="Explore my CV, research, projects, and more.">
+  <meta property="og:image" content="https://yourdomain.com/images/photo1.jpg">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- LightGallery CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
 
-    <title>My personal site!</title>
-  </head>
-  <body>
-    <button class="btn btn-success"> Click me </button>
-    <h1>This is my website that I will be updating by adding many pages!</h1>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #1abc9c;
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --white: #fff;
+      --radius: 8px;
+      --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  
-  <a href="page2.html"> <img src="AndreUzamurengera.JPG" alt="Andre Uzamurengera" width="200px"> </a> <br>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-  </body>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 1rem 2rem;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1, header p {
+      margin: 0.3rem 0;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      background: #34495e;
+      border-radius: var(--radius);
+      transition: background 0.3s;
+      display: block;
+    }
+
+    nav ul li a:hover {
+      background: var(--secondary-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 160px 2rem 2rem; /* updated dynamically with JS */
+    }
+
+    section {
+      display: none;
+      background: var(--white);
+      padding: 1rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    footer a {
+           color: var(--white);
+           text-decoration: underline;
+    }
+
+   footer a:hover {
+          color: var(--secondary-color);
+   }
+
+    iframe {
+      width: 100%;
+      max-width: 100%;
+      height: 60vh;
+      border: none;
+      border-radius: var(--radius);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery a img {
+      width: 100%;
+      border-radius: var(--radius);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+
+    form button {
+      padding: 0.7rem 1.5rem;
+      background-color: var(--secondary-color);
+      border: none;
+      color: white;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    form button:hover {
+      background-color: #16a085;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background-color: var(--primary-color);
+        border-radius: var(--radius);
+        margin-top: 0.5rem;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Andre Uzamurengera</h1>
+    <p>Researcher | Developer | Innovator</p>
+    <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <nav>
+      <ul>
+        <li><a href="#cv" class="nav-link">CV</a></li>
+        <li><a href="#pictures" class="nav-link">Pictures</a></li>
+        <li><a href="#family" class="nav-link">Family</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <p>View my CV directly below or download it.</p>
+      <iframe src="resume/auzamure_Resume.pdf" title="Curriculum Vitae PDF"></iframe>
+      <p><a href="resume/auzamure_Resume.pdf" target="_blank">Download CV</a></p>
+    </section>
+
+    <section id="pictures">
+      <h2>Gallery</h2>
+      <p>A collection of personal and travel photos.</p>
+      <div id="lightgallery" class="gallery">
+        <a href="images/photo1.jpg"><img src="images/photo1.jpg" alt="Photo 1" loading="lazy" /></a>
+        <a href="images/photo2.jpg"><img src="images/photo2.jpg" alt="Photo 2" loading="lazy" /></a>
+        <a href="images/photo3.jpg"><img src="images/photo3.jpg" alt="Photo 3" loading="lazy" /></a>
+        <a href="images/photo4.jpg"><img src="images/photo4.jpg" alt="Photo 4" loading="lazy" /></a>
+      </div>
+    </section>
+
+    <section id="family">
+      <h2>Family</h2>
+      <p>Some moments with my loved ones.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>This section highlights my academic journey and scientific work:</p>
+      <ul>
+        <li><strong>Research Interests:</strong> Artificial Intelligence, Human-Computer Interaction, Computational Linguistics</li>
+        <li><strong>Publications:</strong> <a href="research/publications.html">See my published papers</a></li>
+        <li><strong>Collaborations:</strong> Research with international institutions and academic groups</li>
+        <li><strong>Grants and Awards:</strong> Funding from research councils and academic honors</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>Overview of personal and professional projects:</p>
+      <ul>
+        <li><strong>Portfolio Website:</strong> Built with semantic HTML5, modern CSS, and progressive enhancement</li>
+        <li><strong>Machine Learning:</strong> Image classification and predictive analytics tools</li>
+        <li><strong>Open Source:</strong> Contributions to JavaScript and Python libraries on GitHub</li>
+        <li><strong>Apps:</strong> Developed full-stack web apps using React and Node.js</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>You can reach out to me via the following channels:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:uzandre12@gmail.com">Send Me An Email</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/andreuzamurengera/" target="_blank">View My Linkedin Profile</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/uzandre" target="_blank">Check Out My GitHub</a></li>
+        <li><strong>Twitter:</strong> <a href="https://x.com/uzandre_" target="_blank">Let’s connect on Twitter</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Andre Uzamurengera. All rights reserved.</p>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+    <a href="https://www.linkedin.com/in/andreuzamurengera/" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/uzandre" target="_blank">GitHub</a> |
+    <a href="https://x.com/uzandre_" target="_blank">Twitter</a>
+  </footer>
+
+  <!-- LightGallery JS -->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script>
+    lightGallery(document.getElementById('lightgallery'), {
+      plugins: [lgZoom, lgThumbnail],
+      speed: 500,
+      download: false
+    });
+  </script>
+
+  <!-- Section Toggle + Responsive Menu Script -->
+  <script>
+    const links = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("main section");
+
+    function showSection(id) {
+      sections.forEach(sec => {
+        sec.classList.toggle("active", sec.id === id);
+      });
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("href").substring(1);
+        showSection(id);
+        history.pushState(null, "", `#${id}`);
+        document.querySelector("nav ul").classList.remove("active"); // close menu on click
+      });
+    });
+
+    // Show default or hash section
+    window.addEventListener("load", () => {
+      const headerHeight = document.querySelector("header").offsetHeight;
+      document.querySelector("main").style.paddingTop = `${headerHeight + 20}px`;
+      const hash = window.location.hash.substring(1);
+      showSection(hash || "cv");
+    });
+
+    // Mobile Menu Toggle
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector("nav ul").classList.toggle("active");
+    });
+  </script>
+</body>
 </html>
